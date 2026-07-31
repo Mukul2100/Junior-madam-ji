@@ -20,14 +20,10 @@
       <button type="button">Tap anywhere to enter</button>
     </div>
 
-    <iframe
-      id="background-music"
-      title="Bollywood romantic background song"
-      src="https://www.youtube.com/embed/3JZ_D3ELwOQ?autoplay=1&mute=1&loop=1&playlist=3JZ_D3ELwOQ&controls=0"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen
-      loading="lazy"
-    ></iframe>
+    <audio id="background-music" autoplay loop muted preload="auto">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
 
     <main class="container">
       <section class="hero card">
@@ -127,12 +123,25 @@
     </main>
 
     <script>
+      const backgroundMusic = document.getElementById('background-music');
       const musicOverlay = document.getElementById('music-overlay');
 
-      if (musicOverlay) {
-        musicOverlay.addEventListener('click', () => {
+      const startMusic = async () => {
+        if (!backgroundMusic || !musicOverlay) return;
+
+        try {
+          backgroundMusic.muted = false;
+          backgroundMusic.volume = 0.45;
+          backgroundMusic.currentTime = 10;
+          await backgroundMusic.play();
           musicOverlay.classList.add('hidden');
-        }, { once: true });
+        } catch (error) {
+          console.log('Audio starts after the first tap.');
+        }
+      };
+
+      if (musicOverlay) {
+        musicOverlay.addEventListener('click', startMusic, { once: true });
       }
     </script>
   </body>
