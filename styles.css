@@ -28,10 +28,14 @@ body {
 
 #background-music {
   position: fixed;
-  left: -9999px;
-  top: -9999px;
-  opacity: 0;
-  pointer-events: none;
+  right: 18px;
+  bottom: 18px;
+  width: min(320px, calc(100% - 2rem));
+  height: 180px;
+  border: 0;
+  border-radius: 18px;
+  z-index: 3;
+  box-shadow: 0 14px 40px rgba(203, 149, 198, 0.28);
 }
 
 .music-overlay {

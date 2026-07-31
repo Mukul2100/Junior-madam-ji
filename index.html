@@ -20,10 +20,14 @@
       <button type="button">Tap anywhere to enter</button>
     </div>
 
-    <audio id="background-music" autoplay loop muted preload="auto">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+    <iframe
+      id="background-music"
+      title="Official Haareya background song"
+      src="https://www.youtube.com/embed/TyMUY2CDrjc?autoplay=1&mute=1&loop=1&playlist=TyMUY2CDrjc&controls=0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
 
     <main class="container">
       <section class="hero card">
@@ -123,25 +127,12 @@
     </main>
 
     <script>
-      const backgroundMusic = document.getElementById('background-music');
       const musicOverlay = document.getElementById('music-overlay');
 
-      const startMusic = async () => {
-        if (!backgroundMusic || !musicOverlay) return;
-
-        try {
-          backgroundMusic.muted = false;
-          backgroundMusic.volume = 0.45;
-          await backgroundMusic.play();
-          backgroundMusic.currentTime = 10;
-          musicOverlay.classList.add('hidden');
-        } catch (error) {
-          console.log('Audio can begin only after a user tap.');
-        }
-      };
-
       if (musicOverlay) {
-        musicOverlay.addEventListener('click', startMusic, { once: true });
+        musicOverlay.addEventListener('click', () => {
+          musicOverlay.classList.add('hidden');
+        }, { once: true });
       }
     </script>
   </body>
