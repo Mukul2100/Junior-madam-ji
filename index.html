@@ -16,8 +16,6 @@
     <div class="bg-glow glow-1"></div>
     <div class="bg-glow glow-2"></div>
 
-    <button class="music-overlay" type="button">Tap anywhere to play music</button>
-
     <div class="floating-sprinkles" aria-hidden="true">
       <span>🌷</span>
       <span>💜</span>
@@ -63,8 +61,8 @@
         <h2>Forest little scene</h2>
         <div class="forest-illustration">
           <img
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-            alt="A couple sitting together in a forest"
+            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80"
+            alt="A lush green magical forest with an elderly couple sitting together"
           />
           <span class="tag tag-male">Senior citizen</span>
           <span class="tag tag-female">Junior dadiji</span>
@@ -97,17 +95,6 @@
         <p>
           “Sami, you are my Lady Luck and my sukoon — always in my corner, through NEET prep or life itself.”
         </p>
-      </section>
-
-      <section class="music-section card">
-        <h2>Soft background music</h2>
-        <p>
-          Let this little melody stay with you while you read every note for Sami.
-        </p>
-        <audio id="background-music" controls preload="auto" loop>
-          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
       </section>
 
       <section class="treats-section card">
@@ -144,23 +131,5 @@
       </section>
     </main>
 
-    <script>
-      const backgroundMusic = document.getElementById('background-music');
-      const musicOverlay = document.querySelector('.music-overlay');
-
-      const startMusic = async () => {
-        if (!backgroundMusic || !musicOverlay) return;
-
-        try {
-          backgroundMusic.volume = 0.45;
-          await backgroundMusic.play();
-          musicOverlay.classList.add('hidden');
-        } catch (error) {
-          console.log('Audio can start after user interaction only.');
-        }
-      };
-
-      document.addEventListener('click', startMusic, { once: true });
-    </script>
   </body>
 </html>

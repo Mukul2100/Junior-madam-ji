@@ -73,28 +73,6 @@ body {
   border: 0;
 }
 
-.music-overlay {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  border: none;
-  border-radius: 999px;
-  padding: 14px 22px;
-  background: linear-gradient(135deg, #6a2ca8, #b16ad6);
-  color: #ffffff;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  box-shadow: 0 16px 40px rgba(106, 44, 168, 0.28);
-  cursor: pointer;
-}
-
-.music-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .bg-glow {
   position: fixed;
   width: 260px;
@@ -297,13 +275,6 @@ ul {
   font-weight: 700;
   color: #4a1b69;
 }
-
-.music-section audio {
-  width: 100%;
-  margin-top: 10px;
-  filter: sepia(0.15) saturate(1.15) hue-rotate(255deg);
-}
-
 
 @media (max-width: 640px) {
   .container {
