@@ -16,6 +16,8 @@
     <div class="bg-glow glow-1"></div>
     <div class="bg-glow glow-2"></div>
 
+    <button class="music-overlay" type="button">Tap anywhere to play music</button>
+
     <div class="floating-sprinkles" aria-hidden="true">
       <span>🌷</span>
       <span>💜</span>
@@ -36,7 +38,6 @@
 
     <main class="container">
       <section class="hero card">
-        <p class="eyebrow">Friendship Milestone</p>
         <h1>Happy 6 Months, Sami</h1>
         <p class="subtitle">
           Six months of laughter, late-night messages, comfort, and the kind of bond that feels like home.
@@ -56,6 +57,21 @@
             <span class="stat-label">Magic</span>
           </div>
         </div>
+      </section>
+
+      <section class="forest-card card">
+        <h2>Forest little scene</h2>
+        <div class="forest-illustration">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+            alt="A couple sitting together in a forest"
+          />
+          <span class="tag tag-male">Senior citizen</span>
+          <span class="tag tag-female">Junior dadiji</span>
+        </div>
+        <p>
+          A tiny forest memory for Sami — soft, peaceful, and full of love.
+        </p>
       </section>
 
       <section class="story card">
@@ -88,7 +104,7 @@
         <p>
           Let this little melody stay with you while you read every note for Sami.
         </p>
-        <audio controls preload="none" autoplay loop>
+        <audio id="background-music" controls preload="auto" loop>
           <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
@@ -123,8 +139,28 @@
         <p>
           Here’s to more laughter, more support, more inside jokes, and a friendship that keeps growing brighter.
           Sami, you are the softest part of this journey, and I am so lucky to have you in my life.
+          <strong>From your senior</strong>
         </p>
       </section>
     </main>
+
+    <script>
+      const backgroundMusic = document.getElementById('background-music');
+      const musicOverlay = document.querySelector('.music-overlay');
+
+      const startMusic = async () => {
+        if (!backgroundMusic || !musicOverlay) return;
+
+        try {
+          backgroundMusic.volume = 0.45;
+          await backgroundMusic.play();
+          musicOverlay.classList.add('hidden');
+        } catch (error) {
+          console.log('Audio can start after user interaction only.');
+        }
+      };
+
+      document.addEventListener('click', startMusic, { once: true });
+    </script>
   </body>
 </html>
