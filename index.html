@@ -16,23 +16,14 @@
     <div class="bg-glow glow-1"></div>
     <div class="bg-glow glow-2"></div>
 
-    <div class="floating-sprinkles" aria-hidden="true">
-      <span>🌷</span>
-      <span>💜</span>
-      <span>🍫</span>
-      <span>🍦</span>
-      <span>🧁</span>
-      <span>💗</span>
+    <div class="music-overlay" id="music-overlay">
+      <button type="button">Tap anywhere to enter</button>
     </div>
 
-    <div class="spotify-bg-player" aria-label="Spotify background player">
-      <iframe
-        src="https://open.spotify.com/embed/track/1VvGJIAjhGdB7InVP9NA7V?utm_source=generator"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        title="Spotify song player"
-      ></iframe>
-    </div>
+    <audio id="background-music" autoplay loop muted preload="auto">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
 
     <main class="container">
       <section class="hero card">
@@ -61,13 +52,9 @@
         <h2>SEJU forest</h2>
         <div class="forest-illustration">
           <img
-            src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80"
-            alt="A lush green magical forest with an elderly couple sitting together"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+            alt="A realistic natural forest scene with an elderly couple sitting together"
           />
-          <div class="forest-couple" aria-hidden="true">
-            <span>👨🏻‍🦳</span>
-            <span>👩🏻‍🦳</span>
-          </div>
           <span class="tag tag-male">Senior citizen</span>
           <span class="tag tag-female">Junior dadiji</span>
         </div>
@@ -135,5 +122,27 @@
       </section>
     </main>
 
+    <script>
+      const backgroundMusic = document.getElementById('background-music');
+      const musicOverlay = document.getElementById('music-overlay');
+
+      const startMusic = async () => {
+        if (!backgroundMusic || !musicOverlay) return;
+
+        try {
+          backgroundMusic.muted = false;
+          backgroundMusic.volume = 0.45;
+          await backgroundMusic.play();
+          backgroundMusic.currentTime = 10;
+          musicOverlay.classList.add('hidden');
+        } catch (error) {
+          console.log('Audio can begin only after a user tap.');
+        }
+      };
+
+      if (musicOverlay) {
+        musicOverlay.addEventListener('click', startMusic, { once: true });
+      }
+    </script>
   </body>
 </html>
